@@ -20,7 +20,6 @@ sequenceDiagram
     server-->>browser: HTTP status code 302
     deactivate server
     Note over browser, server: URL redirect 
-    
     browser->>server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
     server-->>browser: HTML document
@@ -39,4 +38,27 @@ sequenceDiagram
     deactivate server
 ```
 
-##0.5 
+0.5: Single page app diagram
+
+```mermaid
+sequenceDiagram
+    title Single page app
+    participant browser
+    participant server
+    browser->>server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate server
+    server-->>browser: HTTP 200
+    deactivate server
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+    activate server
+    server-->>browser: HTTP 200
+    deactivate server
+    Note over browser, server: spa.js renders notes in JSON data
+    browser->>server: HTTP 200 https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: HTTP 201
+    deactivate server
+    Note over browser, server: browser stays on the same page, and sends no further HTTP requests
+    ```
+    
+    

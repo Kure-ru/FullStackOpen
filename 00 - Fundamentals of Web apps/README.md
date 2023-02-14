@@ -38,7 +38,7 @@ sequenceDiagram
     deactivate server
 ```
 
-0.5: Single page app diagram
+## 0.5: Single page app diagram
 
 ```mermaid
 sequenceDiagram
@@ -53,12 +53,23 @@ sequenceDiagram
     activate server
     server-->>browser: HTTP 200
     deactivate server
-    Note over browser, server: spa.js renders notes in JSON data
     browser->>server: HTTP 200 https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
+    deactivate server
+    Note over browser: spa.js renders notes in JSON data
+```
+    
+## 0.6: New note in Single page app diagram
+
+```mermaid
+sequenceDiagram
+    title New note (Single page app)
+    participant browser
+    participant server
+    browser->>server:  HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
     activate server
     server-->>browser: HTTP 201
     deactivate server
     Note over browser, server: browser stays on the same page, and sends no further HTTP requests
 ```
-    
-    

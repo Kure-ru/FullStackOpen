@@ -59,6 +59,6 @@ sequenceDiagram
     server-->>browser: HTTP 201
     deactivate server
     Note over browser, server: browser stays on the same page, and sends no further HTTP requests
-    ```
+```
     
     
